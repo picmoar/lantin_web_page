@@ -12,7 +12,7 @@ import discoverIcon from './icons/discover.png';
 import boothIcon from './icons/booth.png';
 import eventIcon from './icons/event.png';
 import heartIcon from './icons/heart.png';
-import lantinWebImage from './icons/lantinwebimage1.png';
+import lantinWebImage from './icons/lantinwebimage.png';
 import discoverPageImg from './icons/discoverpage.png';
 import boothPageImg from './icons/boothpage.png';
 import eventPageImg from './icons/eventpage.png';
