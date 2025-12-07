@@ -12,6 +12,7 @@ import discoverIcon from './icons/discover.png';
 import boothIcon from './icons/booth.png';
 import eventIcon from './icons/event.png';
 import heartIcon from './icons/heart.png';
+import aboutIcon from './icons/about.png';
 import lantinWebImage from './icons/lantinwebimage.png';
 import discoverPageImg from './icons/discoverpage.png';
 import boothPageImg from './icons/boothpage.png';
@@ -281,6 +282,122 @@ export default function App() {
     </section>
   );
 
+  const renderAbout = () => (
+    <section className="py-16 px-4 min-h-screen">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r bg-clip-text text-transparent" style={{
+            backgroundImage: 'linear-gradient(to right, #61858b, #8fbc8f)'
+          }}>
+            The Story of Lantin
+          </h2>
+          <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
+            A name inspired by ancient traditions of art, poetry, and meaningful connection.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="order-2 md:order-1">
+            <div className="space-y-6">
+              <h3 className="text-3xl font-bold" style={{ color: '#61858b' }}>The Orchid Pavilion Gathering</h3>
+              <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+                <p>
+                  In ancient China, there was a legendary gathering known as the <span className="font-semibold" style={{ color: '#61858b' }}>Orchid Pavilion (兰亭, Lántíng)</span>.
+                  Scholars and poets would meet beside winding streams, where cups of wine floated gently past as they composed poetry,
+                  shared laughter, and celebrated the beauty of art and nature.
+                </p>
+                <p>
+                  Surrounded by bamboo groves, pine trees, and distant mountains, these gatherings were more than social events—they
+                  were moments of profound creative exchange and authentic human connection. Artists found inspiration not just in
+                  the scenery, but in the community they built together.
+                </p>
+                <p>
+                  <span className="font-semibold" style={{ color: '#61858b' }}>Lantin</span> carries this spirit forward into the modern world.
+                  Just as those ancient scholars gathered to celebrate creativity and forge meaningful connections, we're creating a platform
+                  where artists and art lovers can discover each other, share their passions, and build a vibrant community.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="order-1 md:order-2">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-3xl blur-2xl opacity-30" style={{
+                background: 'linear-gradient(to bottom right, #61858b, #8fbc8f, #20b2aa)'
+              }}></div>
+              <ImageWithFallback
+                src={aboutIcon}
+                alt="Ancient Chinese scholars at the Orchid Pavilion"
+                className="relative w-full rounded-3xl shadow-2xl"
+              />
+              <p className="text-sm text-slate-500 italic text-center mt-4">
+                Ancient Chinese scholars gather at the Orchid Pavilion, sitting beside a winding stream where cups of wine
+                float gently past, composing poetry and sharing laughter amid the tranquil scenery of bamboo, pines, and distant mountains.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-stone-50 to-emerald-50">
+            <CardContent className="p-8 space-y-4">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{
+                background: 'linear-gradient(to bottom right, #61858b, #8fbc8f)'
+              }}>
+                <Brush className="w-6 h-6 text-white" />
+              </div>
+              <h4 className="text-xl font-bold">Artistic Heritage</h4>
+              <p className="text-slate-600">
+                Drawing from centuries of cultural tradition where art and community were inseparable.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-stone-50 to-emerald-50">
+            <CardContent className="p-8 space-y-4">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{
+                background: 'linear-gradient(to bottom right, #8fbc8f, #20b2aa)'
+              }}>
+                <Users className="w-6 h-6 text-white" />
+              </div>
+              <h4 className="text-xl font-bold">Community First</h4>
+              <p className="text-slate-600">
+                Building meaningful connections between artists and enthusiasts, just like the gatherings of old.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-0 shadow-lg bg-gradient-to-br from-stone-50 to-emerald-50">
+            <CardContent className="p-8 space-y-4">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{
+                background: 'linear-gradient(to bottom right, #20b2aa, #61858b)'
+              }}>
+                <Heart className="w-6 h-6 text-white" />
+              </div>
+              <h4 className="text-xl font-bold">Passion & Purpose</h4>
+              <p className="text-slate-600">
+                Creating a space where art comes alive through shared appreciation and authentic expression.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-16 text-center space-y-8 py-12 px-4 rounded-3xl" style={{
+          background: 'linear-gradient(to right, #61858b, #8fbc8f, #20b2aa)'
+        }}>
+          <h3 className="text-3xl font-bold text-white">Join Our Modern Gathering</h3>
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
+            Be part of a community that honors artistic tradition while embracing the future of creative connection.
+          </p>
+          <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-50" style={{ color: '#61858b' }}>
+            <Download className="w-5 h-5 mr-2" />
+            Coming Soon
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+
   const renderContact = () => (
     <section className="py-16 px-4 min-h-screen">
       <div className="container mx-auto max-w-4xl">
@@ -391,7 +508,7 @@ export default function App() {
             </h1>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <button 
+            <button
               onClick={() => setActiveSection('home')}
               className={`transition-colors ${activeSection === 'home' ? 'font-semibold' : 'text-slate-600'}`}
               style={{ color: activeSection === 'home' ? '#61858b' : undefined }}
@@ -400,7 +517,16 @@ export default function App() {
             >
               Home
             </button>
-            <button 
+            <button
+              onClick={() => setActiveSection('about')}
+              className={`transition-colors ${activeSection === 'about' ? 'font-semibold' : 'text-slate-600'}`}
+              style={{ color: activeSection === 'about' ? '#61858b' : undefined }}
+              onMouseEnter={(e) => e.target.style.color = '#61858b'}
+              onMouseLeave={(e) => e.target.style.color = activeSection === 'about' ? '#61858b' : '#475569'}
+            >
+              About
+            </button>
+            <button
               onClick={() => setActiveSection('team')}
               className={`transition-colors ${activeSection === 'team' ? 'font-semibold' : 'text-slate-600'}`}
               style={{ color: activeSection === 'team' ? '#61858b' : undefined }}
@@ -409,7 +535,7 @@ export default function App() {
             >
               Team
             </button>
-            <button 
+            <button
               onClick={() => setActiveSection('contact')}
               className={`transition-colors ${activeSection === 'contact' ? 'font-semibold' : 'text-slate-600'}`}
               style={{ color: activeSection === 'contact' ? '#61858b' : undefined }}
@@ -429,6 +555,7 @@ export default function App() {
 
       {/* Content */}
       {activeSection === 'home' && renderHome()}
+      {activeSection === 'about' && renderAbout()}
       {activeSection === 'team' && renderTeam()}
       {activeSection === 'contact' && renderContact()}
 
