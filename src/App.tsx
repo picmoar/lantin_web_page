@@ -296,7 +296,7 @@ export default function App() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid md:grid-cols-2 gap-12 items-start">
           <div className="order-2 md:order-1">
             <div className="space-y-6">
               <h3 className="text-3xl font-bold" style={{ color: '#61858b' }}>The Orchid Pavilion Gathering</h3>
@@ -321,78 +321,17 @@ export default function App() {
           </div>
 
           <div className="order-1 md:order-2">
-            <div className="relative">
+            <div className="relative h-full">
               <div className="absolute inset-0 rounded-3xl blur-2xl opacity-30" style={{
                 background: 'linear-gradient(to bottom right, #61858b, #8fbc8f, #20b2aa)'
               }}></div>
               <ImageWithFallback
                 src={aboutIcon}
                 alt="Ancient Chinese scholars at the Orchid Pavilion"
-                className="relative w-full rounded-3xl shadow-2xl"
+                className="relative w-full h-full object-cover rounded-3xl shadow-2xl"
               />
-              <p className="text-sm text-slate-500 italic text-center mt-4">
-                Ancient Chinese scholars gather at the Orchid Pavilion, sitting beside a winding stream where cups of wine
-                float gently past, composing poetry and sharing laughter amid the tranquil scenery of bamboo, pines, and distant mountains.
-              </p>
             </div>
           </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <Card className="border-0 shadow-lg bg-gradient-to-br from-stone-50 to-emerald-50">
-            <CardContent className="p-8 space-y-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{
-                background: 'linear-gradient(to bottom right, #61858b, #8fbc8f)'
-              }}>
-                <Brush className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="text-xl font-bold">Artistic Heritage</h4>
-              <p className="text-slate-600">
-                Drawing from centuries of cultural tradition where art and community were inseparable.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-0 shadow-lg bg-gradient-to-br from-stone-50 to-emerald-50">
-            <CardContent className="p-8 space-y-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{
-                background: 'linear-gradient(to bottom right, #8fbc8f, #20b2aa)'
-              }}>
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="text-xl font-bold">Community First</h4>
-              <p className="text-slate-600">
-                Building meaningful connections between artists and enthusiasts, just like the gatherings of old.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-0 shadow-lg bg-gradient-to-br from-stone-50 to-emerald-50">
-            <CardContent className="p-8 space-y-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{
-                background: 'linear-gradient(to bottom right, #20b2aa, #61858b)'
-              }}>
-                <Heart className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="text-xl font-bold">Passion & Purpose</h4>
-              <p className="text-slate-600">
-                Creating a space where art comes alive through shared appreciation and authentic expression.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="mt-16 text-center space-y-8 py-12 px-4 rounded-3xl" style={{
-          background: 'linear-gradient(to right, #61858b, #8fbc8f, #20b2aa)'
-        }}>
-          <h3 className="text-3xl font-bold text-white">Join Our Modern Gathering</h3>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            Be part of a community that honors artistic tradition while embracing the future of creative connection.
-          </p>
-          <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-50" style={{ color: '#61858b' }}>
-            <Download className="w-5 h-5 mr-2" />
-            Coming Soon
-          </Button>
         </div>
       </div>
     </section>
