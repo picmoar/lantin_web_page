@@ -21,6 +21,55 @@ import mapPageImg from './icons/mappage.png';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+
+    try {
+      const response = await fetch('https://formspree.io/f/myzrnkqj', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          _replyto: formData.email,
+          email: formData.email,
+          _subject: `Lantin Contact Form: ${formData.subject}`,
+          subject: formData.subject,
+          message: formData.message,
+          _format: 'plain',
+        }),
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        setFormStatus('error');
+        setTimeout(() => setFormStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 5000);
+    }
+  };
 
   const teamMembers = [
     {
@@ -270,10 +319,15 @@ export default function App() {
               <Download className="w-5 h-5 mr-2" />
               Download Lantin
             </Button>
-            <Button size="lg" variant="outline" style={{ 
-              borderColor: '#61858b', 
-              color: '#61858b' 
-            }}>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => setActiveSection('contact')}
+              style={{
+                borderColor: '#61858b',
+                color: '#61858b'
+              }}
+            >
               Contact Us
             </Button>
           </div>
@@ -296,9 +350,9 @@ export default function App() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="order-2 md:order-1">
-            <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-12 items-stretch">
+          <div className="order-2 md:order-1 flex">
+            <div className="space-y-6 flex flex-col justify-center">
               <h3 className="text-3xl font-bold" style={{ color: '#61858b' }}>The Orchid Pavilion Gathering</h3>
               <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
                 <p>
@@ -321,7 +375,7 @@ export default function App() {
           </div>
 
           <div className="order-1 md:order-2">
-            <div className="relative h-full">
+            <div className="relative w-full aspect-square">
               <div className="absolute inset-0 rounded-3xl blur-2xl opacity-30" style={{
                 background: 'linear-gradient(to bottom right, #61858b, #8fbc8f, #20b2aa)'
               }}></div>
@@ -353,56 +407,81 @@ export default function App() {
 
         <Card className="border-0 shadow-2xl overflow-hidden">
           <CardContent className="p-8 md:p-12">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Name</Label>
-                  <Input 
-                    id="name" 
-                    placeholder="Your name" 
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={handleFormChange}
+                    placeholder="Your name"
+                    required
                     className="border-slate-300 focus:border-[#61858b] focus:ring-[#61858b]"
                   />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input 
-                    id="email" 
-                    type="email" 
-                    placeholder="your@email.com" 
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    placeholder="your@email.com"
+                    required
                     className="border-slate-300 focus:border-[#61858b] focus:ring-[#61858b]"
                   />
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="subject">Subject</Label>
-                <Input 
-                  id="subject" 
-                  placeholder="What's this about?" 
+                <Input
+                  id="subject"
+                  value={formData.subject}
+                  onChange={handleFormChange}
+                  placeholder="What's this about?"
+                  required
                   className="border-slate-300 focus:border-[#61858b] focus:ring-[#61858b]"
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="message">Message</Label>
-                <Textarea 
-                  id="message" 
-                  placeholder="Tell us more..." 
+                <Textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={handleFormChange}
+                  placeholder="Tell us more..."
                   rows={6}
+                  required
                   className="border-slate-300 focus:border-[#61858b] focus:ring-[#61858b]"
                 />
               </div>
-              
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="w-full text-white" 
-                style={{ 
-                  background: 'linear-gradient(to right, #61858b, #8fbc8f)' 
+
+              {formStatus === 'success' && (
+                <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-center">
+                  Message sent successfully! We'll get back to you soon.
+                </div>
+              )}
+
+              {formStatus === 'error' && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800 text-center">
+                  Something went wrong. Please try again or email us directly at lantin.artists@gmail.com
+                </div>
+              )}
+
+              <Button
+                type="submit"
+                size="lg"
+                disabled={formStatus === 'submitting'}
+                className="w-full text-white"
+                style={{
+                  background: 'linear-gradient(to right, #61858b, #8fbc8f)'
                 }}
               >
                 <Send className="w-5 h-5 mr-2" />
-                Send Message
+                {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </CardContent>
