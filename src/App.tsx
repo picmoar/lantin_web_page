@@ -29,6 +29,11 @@ export default function App() {
   });
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
+  const handleSectionChange = (section: string) => {
+    setActiveSection(section);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -244,13 +249,13 @@ export default function App() {
         </div>
 
         {/* Founder */}
-        <div className="mb-12">
+        <div className="mb-12 max-w-xl mx-auto">
           <Card className={`border-0 shadow-xl overflow-hidden bg-gradient-to-br ${teamMembers[0].gradient}`}>
             <CardContent className="p-8">
               <div className="flex flex-col items-center text-center space-y-6">
                 <div className="relative">
-                  <div className="absolute inset-0 rounded-full blur-xl opacity-50" style={{ 
-                    background: teamMembers[0].iconBg 
+                  <div className="absolute inset-0 rounded-full blur-xl opacity-50" style={{
+                    background: teamMembers[0].iconBg
                   }}></div>
                   <ImageWithFallback
                     src={teamMembers[0].image}
@@ -262,7 +267,7 @@ export default function App() {
                   <h3 className="text-2xl font-bold">{teamMembers[0].name}</h3>
                   <p className="font-semibold" style={{ color: '#61858b' }}>{teamMembers[0].role}</p>
                 </div>
-                <p className="text-slate-600 leading-relaxed max-w-3xl">
+                <p className="text-slate-600 leading-relaxed">
                   {teamMembers[0].bio}
                 </p>
               </div>
@@ -322,7 +327,7 @@ export default function App() {
             <Button
               size="lg"
               variant="outline"
-              onClick={() => setActiveSection('contact')}
+              onClick={() => handleSectionChange('contact')}
               style={{
                 borderColor: '#61858b',
                 color: '#61858b'
@@ -488,22 +493,17 @@ export default function App() {
         </Card>
 
         <div className="mt-12 text-center space-y-6">
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="flex justify-center max-w-2xl mx-auto">
             <a
               href="https://instagram.com/lantin.artist"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-6 rounded-xl bg-gradient-to-br from-stone-50 to-emerald-50 hover:shadow-lg transition-shadow cursor-pointer"
+              className="p-6 rounded-xl bg-gradient-to-br from-stone-50 to-emerald-50 hover:shadow-lg transition-shadow cursor-pointer w-64"
             >
               <Instagram className="w-8 h-8 mx-auto mb-3" style={{ color: '#61858b' }} />
               <h3 className="font-semibold mb-2">Instagram</h3>
               <p className="text-sm text-slate-600">@lantin.artist</p>
             </a>
-            <div className="p-6 rounded-xl bg-gradient-to-br from-stone-50 to-emerald-50">
-              <Twitter className="w-8 h-8 mx-auto mb-3" style={{ color: '#61858b' }} />
-              <h3 className="font-semibold mb-2">Twitter</h3>
-              <p className="text-sm text-slate-600">@lantin_app</p>
-            </div>
           </div>
         </div>
       </div>
@@ -527,7 +527,7 @@ export default function App() {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <button
-              onClick={() => setActiveSection('home')}
+              onClick={() => handleSectionChange('home')}
               className={`transition-colors ${activeSection === 'home' ? 'font-semibold' : 'text-slate-600'}`}
               style={{ color: activeSection === 'home' ? '#61858b' : undefined }}
               onMouseEnter={(e) => e.target.style.color = '#61858b'}
@@ -536,7 +536,7 @@ export default function App() {
               Home
             </button>
             <button
-              onClick={() => setActiveSection('about')}
+              onClick={() => handleSectionChange('about')}
               className={`transition-colors ${activeSection === 'about' ? 'font-semibold' : 'text-slate-600'}`}
               style={{ color: activeSection === 'about' ? '#61858b' : undefined }}
               onMouseEnter={(e) => e.target.style.color = '#61858b'}
@@ -545,7 +545,7 @@ export default function App() {
               About
             </button>
             <button
-              onClick={() => setActiveSection('team')}
+              onClick={() => handleSectionChange('team')}
               className={`transition-colors ${activeSection === 'team' ? 'font-semibold' : 'text-slate-600'}`}
               style={{ color: activeSection === 'team' ? '#61858b' : undefined }}
               onMouseEnter={(e) => e.target.style.color = '#61858b'}
@@ -554,7 +554,7 @@ export default function App() {
               Team
             </button>
             <button
-              onClick={() => setActiveSection('contact')}
+              onClick={() => handleSectionChange('contact')}
               className={`transition-colors ${activeSection === 'contact' ? 'font-semibold' : 'text-slate-600'}`}
               style={{ color: activeSection === 'contact' ? '#61858b' : undefined }}
               onMouseEnter={(e) => e.target.style.color = '#61858b'}
@@ -610,7 +610,7 @@ export default function App() {
             <div className="pt-6 border-t w-full text-sm text-slate-500" style={{ 
               borderColor: 'rgba(97, 133, 139, 0.2)' 
             }}>
-              <p>&copy; 2024 Lantin. All rights reserved. Made with ❤️ for the art community.</p>
+              <p>&copy; 2025 Lantin. All rights reserved. Made with ❤️ for the art community.</p>
             </div>
           </div>
         </div>
