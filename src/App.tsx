@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Palette, MapPin, Calendar, Heart, Users, Star, ArrowRight, Download, Apple, PlayCircle, Brush, Camera, Scissors, Eye, Instagram, Twitter, Mail, Send } from 'lucide-react';
+import { Palette, MapPin, Calendar, Heart, Users, Star, ArrowRight, Download, Apple, PlayCircle, Brush, Camera, Scissors, Eye, Instagram, Twitter, Mail, Send, Menu, X } from 'lucide-react';
 import { Button } from './components/ui/button';
 import { Card, CardContent } from './components/ui/card';
 import { Badge } from './components/ui/badge';
@@ -21,6 +21,7 @@ import mapPageImg from './icons/mappage.png';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,6 +32,7 @@ export default function App() {
 
   const handleSectionChange = (section: string) => {
     setActiveSection(section);
+    setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -513,8 +515,8 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b shadow-sm" style={{ 
-        borderColor: 'rgba(97, 133, 139, 0.2)' 
+      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b shadow-sm" style={{
+        borderColor: 'rgba(97, 133, 139, 0.2)'
       }}>
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -525,6 +527,8 @@ export default function App() {
               Lantin
             </h1>
           </div>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => handleSectionChange('home')}
@@ -562,13 +566,63 @@ export default function App() {
             >
               Contact Us
             </button>
-            <Button className="text-white border-0 shadow-lg hover:shadow-xl transition-shadow" style={{ 
-              background: 'linear-gradient(to right, #61858b, #8fbc8f)' 
+            <Button className="text-white border-0 shadow-lg hover:shadow-xl transition-shadow" style={{
+              background: 'linear-gradient(to right, #61858b, #8fbc8f)'
             }}>
               Coming Soon
             </Button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{ color: '#61858b' }}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t bg-white" style={{ borderColor: 'rgba(97, 133, 139, 0.2)' }}>
+            <div className="container mx-auto px-4 py-4 space-y-4">
+              <button
+                onClick={() => handleSectionChange('home')}
+                className={`block w-full text-left py-2 px-4 rounded transition-colors ${activeSection === 'home' ? 'font-semibold bg-stone-50' : 'text-slate-600'}`}
+                style={{ color: activeSection === 'home' ? '#61858b' : undefined }}
+              >
+                Home
+              </button>
+              <button
+                onClick={() => handleSectionChange('about')}
+                className={`block w-full text-left py-2 px-4 rounded transition-colors ${activeSection === 'about' ? 'font-semibold bg-stone-50' : 'text-slate-600'}`}
+                style={{ color: activeSection === 'about' ? '#61858b' : undefined }}
+              >
+                About
+              </button>
+              <button
+                onClick={() => handleSectionChange('team')}
+                className={`block w-full text-left py-2 px-4 rounded transition-colors ${activeSection === 'team' ? 'font-semibold bg-stone-50' : 'text-slate-600'}`}
+                style={{ color: activeSection === 'team' ? '#61858b' : undefined }}
+              >
+                Team
+              </button>
+              <button
+                onClick={() => handleSectionChange('contact')}
+                className={`block w-full text-left py-2 px-4 rounded transition-colors ${activeSection === 'contact' ? 'font-semibold bg-stone-50' : 'text-slate-600'}`}
+                style={{ color: activeSection === 'contact' ? '#61858b' : undefined }}
+              >
+                Contact Us
+              </button>
+              <Button className="w-full text-white border-0" style={{
+                background: 'linear-gradient(to right, #61858b, #8fbc8f)'
+              }}>
+                Coming Soon
+              </Button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Content */}
