@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Menu, X, Apple, PlayCircle } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import lantinLogo from '../../lantinlogo.png';
+import appStoreBadge from '../../icons/app-store-badge.png';
+import googlePlayBadge from '../../icons/google-play-badge-new.png';
 
 interface NavigationProps {
   activeSection: string;
@@ -67,12 +69,12 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
           >
             Contact Us
           </button>
-          <div className="flex items-center gap-2">
-            <a href="https://apps.apple.com/us/app/lantin/id6756462669" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-stone-100 transition-colors" style={{ color: '#61858b' }}>
-              <Apple className="w-6 h-6" />
+          <div className="flex items-center gap-3">
+            <a href="https://apps.apple.com/us/app/lantin/id6756462669" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <img src={appStoreBadge} alt="Download on App Store" className="w-32 h-auto" />
             </a>
-            <button className="p-2 rounded-full hover:bg-stone-100 transition-colors" style={{ color: '#61858b' }}>
-              <PlayCircle className="w-6 h-6" />
+            <button onClick={() => alert('Currently unavailable. Coming soon!')} className="hover:opacity-80 transition-opacity">
+              <img src={googlePlayBadge} alt="Get it on Google Play" className="w-32 h-auto" />
             </button>
           </div>
         </div>
@@ -119,12 +121,12 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
             >
               Contact Us
             </button>
-            <div className="flex items-center gap-3 justify-center">
-              <a href="https://apps.apple.com/us/app/lantin/id6756462669" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-stone-100 transition-colors" style={{ color: '#61858b' }}>
-                <Apple className="w-6 h-6" />
+            <div className="flex flex-col gap-3 items-center">
+              <a href="https://apps.apple.com/us/app/lantin/id6756462669" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                <img src={appStoreBadge} alt="Download on App Store" className="w-40 h-auto" />
               </a>
-              <button className="p-2 rounded-full hover:bg-stone-100 transition-colors" style={{ color: '#61858b' }}>
-                <PlayCircle className="w-6 h-6" />
+              <button onClick={() => alert('Currently unavailable. Coming soon!')} className="hover:opacity-80 transition-opacity">
+                <img src={googlePlayBadge} alt="Get it on Google Play" className="w-40 h-auto" />
               </button>
             </div>
           </div>

@@ -85,7 +85,7 @@ export default function Home() {
                 <Button size="lg" variant="outline" className="border-2 hover:bg-teal-50" style={{
                   borderColor: 'rgba(97, 133, 139, 0.4)',
                   color: '#61858b'
-                }}>
+                }} onClick={() => alert('Currently unavailable. Coming soon!')}>
                   <PlayCircle className="w-5 h-5 mr-2" />
                   Get on Android
                 </Button>
@@ -161,7 +161,7 @@ export default function Home() {
                 Download for iOS
               </a>
             </Button>
-            <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-50" style={{ color: '#61858b' }}>
+            <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-50" style={{ color: '#61858b' }} onClick={() => alert('Currently unavailable. Coming soon!')}>
               <PlayCircle className="w-5 h-5 mr-2" />
               Get on Android
             </Button>

@@ -34,7 +34,7 @@ export default function Team({ onNavigate }: TeamProps) {
         </div>
 
         {/* Founder */}
-        <div className="mb-12 max-w-xl mx-auto">
+        <div className="mb-12 mx-auto" style={{ maxWidth: '34rem' }}>
           <Card className={`border-0 shadow-xl overflow-hidden bg-gradient-to-br ${teamMembers[0].gradient}`}>
             <CardContent className="p-8">
               <div className="flex flex-col items-center text-center space-y-6">
@@ -102,25 +102,6 @@ export default function Team({ onNavigate }: TeamProps) {
             We're building more than just a platform—we're creating a movement that celebrates creativity
             and connects artists with the community they deserve.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-white" style={{
-              background: 'linear-gradient(to right, #cd853f, #61858b)'
-            }}>
-              <Download className="w-5 h-5 mr-2" />
-              Download Lantin
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => onNavigate('contact')}
-              style={{
-                borderColor: '#61858b',
-                color: '#61858b'
-              }}
-            >
-              Contact Us
-            </Button>
-          </div>
         </div>
       </div>
     </section>
