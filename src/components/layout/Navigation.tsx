@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Button } from '../ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Apple, PlayCircle } from 'lucide-react';
 import lantinLogo from '../../lantinlogo.png';
 
 interface NavigationProps {
@@ -68,11 +67,14 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
           >
             Contact Us
           </button>
-          <Button className="text-white border-0 shadow-lg hover:shadow-xl transition-shadow" style={{
-            background: 'linear-gradient(to right, #61858b, #8fbc8f)'
-          }}>
-            Coming Soon
-          </Button>
+          <div className="flex items-center gap-2">
+            <a href="https://apps.apple.com/us/app/lantin/id6756462669" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-stone-100 transition-colors" style={{ color: '#61858b' }}>
+              <Apple className="w-6 h-6" />
+            </a>
+            <button className="p-2 rounded-full hover:bg-stone-100 transition-colors" style={{ color: '#61858b' }}>
+              <PlayCircle className="w-6 h-6" />
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -117,11 +119,14 @@ export default function Navigation({ activeSection, onNavigate }: NavigationProp
             >
               Contact Us
             </button>
-            <Button className="w-full text-white border-0" style={{
-              background: 'linear-gradient(to right, #61858b, #8fbc8f)'
-            }}>
-              Coming Soon
-            </Button>
+            <div className="flex items-center gap-3 justify-center">
+              <a href="https://apps.apple.com/us/app/lantin/id6756462669" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full hover:bg-stone-100 transition-colors" style={{ color: '#61858b' }}>
+                <Apple className="w-6 h-6" />
+              </a>
+              <button className="p-2 rounded-full hover:bg-stone-100 transition-colors" style={{ color: '#61858b' }}>
+                <PlayCircle className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -76,9 +76,11 @@ export default function Home() {
                 <Button size="lg" className="text-white border-0 shadow-lg hover:shadow-xl transition-shadow" style={{
                   background: 'linear-gradient(to right, #61858b, #8fbc8f)',
                   '--tw-shadow-color': 'rgba(97, 133, 139, 0.3)'
-                }}>
-                  <Apple className="w-5 h-5 mr-2" />
-                  Download for iOS
+                }} asChild>
+                  <a href="https://apps.apple.com/us/app/lantin/id6756462669" target="_blank" rel="noopener noreferrer">
+                    <Apple className="w-5 h-5 mr-2" />
+                    Download for iOS
+                  </a>
                 </Button>
                 <Button size="lg" variant="outline" className="border-2 hover:bg-teal-50" style={{
                   borderColor: 'rgba(97, 133, 139, 0.4)',
@@ -152,9 +154,16 @@ export default function Home() {
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Connecting artists and art lovers through innovative experiences and meaningful community building.
           </p>
-          <div className="flex justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-50" style={{ color: '#61858b' }} asChild>
+              <a href="https://apps.apple.com/us/app/lantin/id6756462669" target="_blank" rel="noopener noreferrer">
+                <Apple className="w-5 h-5 mr-2" />
+                Download for iOS
+              </a>
+            </Button>
             <Button size="lg" variant="secondary" className="bg-white hover:bg-gray-50" style={{ color: '#61858b' }}>
-              Coming Soon
+              <PlayCircle className="w-5 h-5 mr-2" />
+              Get on Android
             </Button>
           </div>
         </div>
